@@ -6,8 +6,10 @@ import { FaGoogle, FaGithub } from "react-icons/fa";
 import { useContext } from "react";
 import { AuthContext } from "../../../context/AuthProvider/AuthProvider";
 import { GoogleAuthProvider } from "firebase/auth";
+import { useState } from "react";
 
 const SignIn = () => {
+  const [error, setError] = useState("");
   const { providerLogin, createUser } = useContext(AuthContext);
   const googleProvider = new GoogleAuthProvider();
   const handleGoogleSignIn = () => {
@@ -16,7 +18,9 @@ const SignIn = () => {
         const user = result.user;
         console.log(user);
       })
-      .error((error) => console.error(error));
+      .error((error) => {
+        console.error(error);
+      });
   };
 
   const handleSubmit = (event) => {
@@ -30,10 +34,12 @@ const SignIn = () => {
     createUser(email, password)
       .then((result) => {
         const user = result.user;
+        setError("");
         form.reset();
       })
       .catch((error) => {
         console.error(error);
+        setError(error.message);
       });
   };
   return (
@@ -89,6 +95,7 @@ const SignIn = () => {
       <Button variant="primary" type="submit">
         Register
       </Button>
+      <p className="text-danger">{error}</p>
       <div className="mt-3 d-flex">
         <p className="me-3">Sign up with</p>
         <div>

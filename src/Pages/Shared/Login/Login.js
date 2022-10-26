@@ -1,4 +1,5 @@
 import React from "react";
+import { useState } from "react";
 import { useContext } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
@@ -6,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../context/AuthProvider/AuthProvider";
 
 const Login = () => {
+  const [error, setError] = useState("");
   const navigate = useNavigate();
   const { signIn } = useContext(AuthContext);
   const handleSubmit = (event) => {
@@ -16,11 +18,13 @@ const Login = () => {
     signIn(email, password)
       .then((result) => {
         const user = result.user;
+        setError("");
         form.reset();
         navigate("/");
       })
       .catch((e) => {
         console.error(e);
+        setError(e.message);
       });
   };
   return (
@@ -51,6 +55,8 @@ const Login = () => {
       <Button variant="primary" type="submit">
         Log In
       </Button>
+      <br />
+      <p className="text-danger">{error}</p>
     </Form>
   );
 };
