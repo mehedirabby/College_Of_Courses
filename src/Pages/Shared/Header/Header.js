@@ -11,7 +11,14 @@ import { AuthContext } from "../../../context/AuthProvider/AuthProvider";
 import { FaUser } from "react-icons/fa";
 
 const Header = () => {
-  const { user } = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {})
+      .catch((error) => {
+        console.error("error from logout", error);
+      });
+  };
   return (
     <Navbar bg="light" expand="lg" className="m-2">
       <Container fluid>
@@ -42,9 +49,28 @@ const Header = () => {
             </Nav.Link>
           </Nav>
           <Form className="d-flex">
-            <p className="align-items-center justify-content-center me-2">
-              {user?.displayName}
-            </p>
+            <Nav.Link className="align-items-center justify-content-center me-2">
+              {user?.uid ? (
+                <>
+                  <Link className="me-2">
+                    <Button onClick={handleLogOut} variant="outline-danger">
+                      Log Out
+                    </Button>
+                  </Link>
+
+                  <span>{user?.displayName}</span>
+                </>
+              ) : (
+                <>
+                  <Link to="/login" className="me-2">
+                    <Button variant="outline-info">Log In</Button>
+                  </Link>
+                  <Link to="/signIn" className="me-2">
+                    <Button variant="outline-success">Sign In</Button>
+                  </Link>
+                </>
+              )}
+            </Nav.Link>
             <div className="ms-1 me-2">
               {user?.photoURL ? (
                 <Image
@@ -56,9 +82,6 @@ const Header = () => {
                 <FaUser></FaUser>
               )}
             </div>
-            <Link to="/signIn" className="me-2">
-              <Button variant="outline-success">Sign In</Button>
-            </Link>
           </Form>
         </Navbar.Collapse>
       </Container>
