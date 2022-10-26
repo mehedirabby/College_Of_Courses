@@ -1,4 +1,5 @@
 import React from "react";
+import { useContext } from "react";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
@@ -6,8 +7,10 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../../context/AuthProvider/AuthProvider";
 
 const Header = () => {
+  const { user } = useContext(AuthContext);
   return (
     <Navbar bg="light" expand="lg" className="m-2">
       <Container fluid>
@@ -38,9 +41,12 @@ const Header = () => {
             </Nav.Link>
           </Nav>
           <Form className="d-flex">
-            <Link>
+            <Link className="me-2">
               <Button variant="outline-success">Search</Button>
             </Link>
+            <p className="align-items-center justify-content-center">
+              {user.displayName}
+            </p>
           </Form>
         </Navbar.Collapse>
       </Container>
