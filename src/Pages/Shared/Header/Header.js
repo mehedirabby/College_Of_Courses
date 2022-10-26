@@ -1,6 +1,6 @@
 import React from "react";
 import { useContext } from "react";
-import Button from "react-bootstrap/Button";
+import { Button, Image } from "react-bootstrap";
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
@@ -8,6 +8,7 @@ import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../context/AuthProvider/AuthProvider";
+import { FaUser } from "react-icons/fa";
 
 const Header = () => {
   const { user } = useContext(AuthContext);
@@ -41,12 +42,23 @@ const Header = () => {
             </Nav.Link>
           </Nav>
           <Form className="d-flex">
-            <Link className="me-2">
-              <Button variant="outline-success">Search</Button>
-            </Link>
-            <p className="align-items-center justify-content-center">
-              {user.displayName}
+            <p className="align-items-center justify-content-center me-2">
+              {user?.displayName}
             </p>
+            <div className="ms-1 me-2">
+              {user?.photoURL ? (
+                <Image
+                  style={{ height: "40px" }}
+                  roundedCircle
+                  src={user.photoURL}
+                ></Image>
+              ) : (
+                <FaUser></FaUser>
+              )}
+            </div>
+            <Link to="/signIn" className="me-2">
+              <Button variant="outline-success">Sign In</Button>
+            </Link>
           </Form>
         </Navbar.Collapse>
       </Container>
