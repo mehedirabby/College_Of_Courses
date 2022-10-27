@@ -3,55 +3,54 @@ import Accordion from "react-bootstrap/Accordion";
 
 const Blog = () => {
   return (
-    <Accordion defaultActiveKey="0">
-      <Accordion.Item eventKey="0">
-        <Accordion.Header>What Is Cors?</Accordion.Header>
-        <Accordion.Body>
-          Cross-Origin Resource Sharing (CORS) is an HTTP-header based mechanism
-          that allows a server to indicate any origins (domain, scheme, or port)
-          other than its own from which a browser should permit loading
-          resources
-        </Accordion.Body>
-      </Accordion.Item>
-      <Accordion.Item eventKey="1">
-        <Accordion.Header>
-          Why are you using firebase? What other options do you have to
-          implement authentication?
-        </Accordion.Header>
-        <Accordion.Body>
-          I use Firebase because it is beginner friendly .There is a lot of auth
-          provider but as a beginner I prefer Firebase. Options of implement
-          authentication:Password-based authentication. Passwords are the most
-          common methods of authentication. ... Multi-factor authentication. ...
-          Certificate-based authentication. ... Biometric authentication. ...
-          Token-based authentication.
-        </Accordion.Body>
-      </Accordion.Item>
-      <Accordion.Item eventKey="3">
-        <Accordion.Header>Accordion Item #3</Accordion.Header>
-        <Accordion.Body>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
-        </Accordion.Body>
-      </Accordion.Item>
-      <Accordion.Item eventKey="4">
-        <Accordion.Header>Accordion Item #4</Accordion.Header>
-        <Accordion.Body>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
-        </Accordion.Body>
-      </Accordion.Item>
-    </Accordion>
+    <div>
+      <h2 className="text-warning m-2">Some Ques You Might Know?</h2>
+      <Accordion defaultActiveKey="0">
+        <Accordion.Item eventKey="0">
+          <Accordion.Header>What Is Cors?</Accordion.Header>
+          <Accordion.Body>
+            Cross-Origin Resource Sharing (CORS) is an HTTP-header based
+            mechanism that allows a server to indicate any origins (domain,
+            scheme, or port) other than its own from which a browser should
+            permit loading resources
+          </Accordion.Body>
+        </Accordion.Item>
+        <Accordion.Item eventKey="1">
+          <Accordion.Header>
+            Why are you using firebase? What other options do you have to
+            implement authentication?
+          </Accordion.Header>
+          <Accordion.Body>
+            I use Firebase because it is beginner friendly .There is a lot of
+            auth provider but as a beginner I prefer Firebase. Options of
+            implement authentication:Password-based authentication. Passwords
+            are the most common methods of authentication. ... Multi-factor
+            authentication. ... Certificate-based authentication. ... Biometric
+            authentication. ... Token-based authentication.
+          </Accordion.Body>
+        </Accordion.Item>
+        <Accordion.Item eventKey="3">
+          <Accordion.Header>How Does The private Route Work?</Accordion.Header>
+          <Accordion.Body>
+            The private route component is similar to the public route, the only
+            change is that redirect URL and authenticate condition. If the user
+            is not authenticated he will be redirected to the login page and the
+            user can only access the authenticated routes If he is authenticated
+            (Logged in).
+          </Accordion.Body>
+        </Accordion.Item>
+        <Accordion.Item eventKey="4">
+          <Accordion.Header>What is node? how does it works?</Accordion.Header>
+          <Accordion.Body>
+            It is a used as backend service where javascript works on the
+            server-side of the application. This way javascript is used on both
+            frontend and backend. Node. js runs on chrome v8 engine which
+            converts javascript code into machine code, it is highly scalable,
+            lightweight, fast, and data-intensive
+          </Accordion.Body>
+        </Accordion.Item>
+      </Accordion>
+    </div>
   );
 };
 

@@ -90,7 +90,8 @@ const Header = () => {
                 <Image
                   style={{ height: "40px" }}
                   roundedCircle
-                  src={user.photoURL}
+                  title={user?.displayName}
+                  src={user?.photoURL}
                   onMouseOver={user?.displayName}
                 ></Image>
               ) : (
