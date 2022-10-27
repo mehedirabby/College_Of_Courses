@@ -5,13 +5,26 @@ import { Link } from "react-router-dom";
 import { FaGoogle, FaGithub } from "react-icons/fa";
 import { useContext } from "react";
 import { AuthContext } from "../../../context/AuthProvider/AuthProvider";
-import { GoogleAuthProvider } from "firebase/auth";
+import { GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
 import { useState } from "react";
 
 const SignIn = () => {
   const [error, setError] = useState("");
   const { providerLogin, createUser } = useContext(AuthContext);
   const googleProvider = new GoogleAuthProvider();
+  const githubProvider = new GithubAuthProvider();
+  //   Github Sign In method
+  const handleGithubSignIn = () => {
+    providerLogin(githubProvider)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+      })
+      .error((error) => {
+        console.error(error);
+      });
+  };
+  //Google sign In Method
   const handleGoogleSignIn = () => {
     providerLogin(googleProvider)
       .then((result) => {
@@ -102,7 +115,7 @@ const SignIn = () => {
           <Button onClick={handleGoogleSignIn} variant="dark" className="me-2">
             <FaGoogle></FaGoogle>
           </Button>
-          <Button variant="danger">
+          <Button onClick={handleGithubSignIn} variant="danger">
             <FaGithub></FaGithub>
           </Button>
         </div>

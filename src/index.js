@@ -5,13 +5,16 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import "bootstrap/dist/css/bootstrap.min.css";
 import AuthProvider from "./context/AuthProvider/AuthProvider";
+import { DartThemeProvider } from "./Pages/Shared/Header/DarkThemeContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <AuthProvider>
-      <App />
-    </AuthProvider>
+    <DartThemeProvider>
+      <AuthProvider>
+        <App />
+      </AuthProvider>
+    </DartThemeProvider>
   </React.StrictMode>
 );
 

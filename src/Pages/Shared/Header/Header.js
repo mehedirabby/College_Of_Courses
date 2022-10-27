@@ -9,8 +9,11 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../context/AuthProvider/AuthProvider";
 import { FaUser } from "react-icons/fa";
+import DarkModeToggle from "react-dark-mode-toggle";
+import { DarkThemeContext } from "./DarkThemeContext";
 
 const Header = () => {
+  const { turnOn, setTurnOn, mainColor } = useContext(DarkThemeContext);
   const { user, logOut } = useContext(AuthContext);
   const handleLogOut = () => {
     logOut()
@@ -20,11 +23,10 @@ const Header = () => {
       });
   };
   return (
-    <Navbar bg="light" expand="lg" className="m-2">
+    <Navbar bg="dark" expand="lg" className="me-2">
       <Container fluid>
-        <Link to="/">
-          <Navbar.Brand>Language College</Navbar.Brand>
-        </Link>
+        <Navbar.Brand className="text-white">Language College</Navbar.Brand>
+
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
           <Nav
@@ -32,21 +34,25 @@ const Header = () => {
             style={{ maxHeight: "100px" }}
             navbarScroll
           >
-            <Nav.Link to="/">Courses</Nav.Link>
-            <Nav.Link href="/blogs">Blogs</Nav.Link>
+            <Nav.Link className="text-white" to="/">
+              Courses
+            </Nav.Link>
+            <Nav.Link className="text-white" href="/blogs">
+              Blogs
+            </Nav.Link>
             <NavDropdown title="Link" id="navbarScrollingDropdown">
-              <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
-              <NavDropdown.Item href="#action4">
+              <NavDropdown.Item className="text-white" href="#action3">
+                Action
+              </NavDropdown.Item>
+              <NavDropdown.Item className="text-white" href="#action4">
                 Another action
               </NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item href="#action5">
+              <NavDropdown.Item className="text-white" href="#action5">
                 Something else here
               </NavDropdown.Item>
             </NavDropdown>
-            <Nav.Link href="#" disabled>
-              Link
-            </Nav.Link>
+            <DarkModeToggle onChange={setTurnOn} checked={turnOn} size={80} />
           </Nav>
           <Form className="d-flex">
             <Nav.Link className="align-items-center justify-content-center me-2">
@@ -58,7 +64,7 @@ const Header = () => {
                     </Button>
                   </Link>
 
-                  <span>{user?.displayName}</span>
+                  <span className="text-white">{user?.displayName}</span>
                 </>
               ) : (
                 <>

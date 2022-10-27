@@ -5,13 +5,41 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../context/AuthProvider/AuthProvider";
+import { FaGoogle, FaGithub } from "react-icons/fa";
+import { GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
 
 const Login = () => {
   const [error, setError] = useState("");
   const navigate = useNavigate();
-  const { signIn } = useContext(AuthContext);
+  const { signIn, providerLogin } = useContext(AuthContext);
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
+  const googleProvider = new GoogleAuthProvider();
+  const githubProvider = new GithubAuthProvider();
+
+  //   Github Sign In method
+  const handleGithubSignIn = () => {
+    providerLogin(githubProvider)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+      })
+      .error((error) => {
+        console.error(error);
+      });
+  };
+
+  //   Google Sign In method
+  const handleGoogleSignIn = () => {
+    providerLogin(googleProvider)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+      })
+      .error((error) => {
+        console.error(error);
+      });
+  };
   const handleSubmit = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -59,6 +87,17 @@ const Login = () => {
       </Button>
       <br />
       <p className="text-danger">{error}</p>
+      <div className="mt-3 d-flex">
+        <p className="me-3">Log In with</p>
+        <div>
+          <Button onClick={handleGoogleSignIn} variant="dark" className="me-2">
+            <FaGoogle></FaGoogle>
+          </Button>
+          <Button onClick={handleGithubSignIn} variant="danger">
+            <FaGithub></FaGithub>
+          </Button>
+        </div>
+      </div>
     </Form>
   );
 };
