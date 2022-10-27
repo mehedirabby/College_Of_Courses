@@ -9,7 +9,9 @@ const LeftSidenav = () => {
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
-    fetch("http://college-server.vercel.app/course-categories")
+    // fetch("http://college-server.vercel.app/course-categories")
+
+    fetch("https://college-server.vercel.app/course-categories")
       .then((res) => res.json())
       .then((data) => setCategories(data));
   }, []);
