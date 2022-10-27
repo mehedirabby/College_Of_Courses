@@ -14,16 +14,19 @@ const CourseSummeryCart = ({ course }) => {
             {course.details.slice(0, 100) + "..."}
             <Link to={`/course/${course._id}`}>Learn About</Link>
           </p>
-          <p className="card-text">
+          <br />
+          <h3>Price: {course.price}$</h3>
+
+          <div className="card-text d-flex">
             <div className="mb-2">
               <FaStar className="me-2 text-warning"></FaStar>
               {course.rating}
             </div>
             <div>
-              <FaUser className="me-2 text-danger "></FaUser>
+              <FaUser className="ms-4  text-danger "></FaUser>
               {course.access}
             </div>
-          </p>
+          </div>
         </div>
       </div>
     </div>

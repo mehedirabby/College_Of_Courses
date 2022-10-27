@@ -1,16 +1,16 @@
 import React from "react";
+import { Row } from "react-bootstrap";
 import { useLoaderData } from "react-router-dom";
 import CourseSummeryCart from "../../Shared/courseSummeryCart/courseSummeryCart";
 
 const Home = () => {
   const allCourse = useLoaderData();
   return (
-    <div>
-      <h2>this is home component{allCourse.length}</h2>
+    <Row>
       {allCourse.map((course) => (
         <CourseSummeryCart key={course._id} course={course}></CourseSummeryCart>
       ))}
-    </div>
+    </Row>
   );
 };
 
