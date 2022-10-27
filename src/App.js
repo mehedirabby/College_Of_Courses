@@ -11,7 +11,7 @@ function App() {
       style={{
         backgroundColor: mainColor.bg,
         //color: mainColor.txt,
-        height: "5000px",
+        height: "1000px",
       }}
     >
       <RouterProvider router={routes}></RouterProvider>

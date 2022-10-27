@@ -11,6 +11,7 @@ import { AuthContext } from "../../../context/AuthProvider/AuthProvider";
 import { FaUser } from "react-icons/fa";
 import DarkModeToggle from "react-dark-mode-toggle";
 import { DarkThemeContext } from "./DarkThemeContext";
+import "./header.css";
 
 const Header = () => {
   const { turnOn, setTurnOn, mainColor } = useContext(DarkThemeContext);
@@ -25,6 +26,13 @@ const Header = () => {
   return (
     <Navbar bg="dark" expand="lg" className="me-2">
       <Container fluid>
+        <Image
+          className="me-2"
+          style={{ height: "60px" }}
+          src={
+            "https://cdn3.vectorstock.com/i/1000x1000/54/27/lc-logo-design-initial-letter-logo-design-vector-37075427.jpg"
+          }
+        ></Image>
         <Navbar.Brand className="text-white">Language College</Navbar.Brand>
 
         <Navbar.Toggle aria-controls="navbarScroll" />
@@ -34,7 +42,7 @@ const Header = () => {
             style={{ maxHeight: "100px" }}
             navbarScroll
           >
-            <Nav.Link className="text-white" to="/">
+            <Nav.Link className="text-white" href="/">
               Courses
             </Nav.Link>
             <Nav.Link className="text-white" href="/blogs">
@@ -83,6 +91,7 @@ const Header = () => {
                   style={{ height: "40px" }}
                   roundedCircle
                   src={user.photoURL}
+                  onMouseOver={user?.displayName}
                 ></Image>
               ) : (
                 <FaUser></FaUser>
