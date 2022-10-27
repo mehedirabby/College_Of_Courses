@@ -56,29 +56,29 @@ const SignIn = () => {
       });
   };
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form className="w-75 mt-2" onSubmit={handleSubmit}>
       <Form.Group className="mb-3" controlId="formBasicEmail">
-        <Form.Label>Your Name</Form.Label>
+        <Form.Label className="text-info">Your Name</Form.Label>
         <Form.Control name="name" type="text" placeholder="Enter Your Name" />
-        <Form.Text className="text-muted">
+        <Form.Text className="text-muted text-danger">
           We'll never share your Identification To Others.
         </Form.Text>
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="formBasicEmail">
-        <Form.Label> Photo URL</Form.Label>
+        <Form.Label className="text-info"> Photo URL</Form.Label>
         <Form.Control
           name="photoURL"
           type="text"
           placeholder="Enter Your Image URL"
         />
-        <Form.Text className="text-muted">
+        <Form.Text className="text-muted text-danger">
           Your Photo will secure with us
         </Form.Text>
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="formBasicEmail">
-        <Form.Label>Email address</Form.Label>
+        <Form.Label className="text-info">Email address</Form.Label>
         <Form.Control
           name="email"
           type="email"
@@ -91,7 +91,7 @@ const SignIn = () => {
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="formBasicPassword">
-        <Form.Label>Password</Form.Label>
+        <Form.Label className="text-info">Password</Form.Label>
         <Form.Control
           name="password"
           type="password"

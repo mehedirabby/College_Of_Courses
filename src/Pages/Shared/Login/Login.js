@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useContext } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../context/AuthProvider/AuthProvider";
 import { FaGoogle, FaGithub } from "react-icons/fa";
 import { GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
@@ -58,9 +58,9 @@ const Login = () => {
       });
   };
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form className="w-75 mt-3" onSubmit={handleSubmit}>
       <Form.Group className="mb-3" controlId="formBasicEmail">
-        <Form.Label>Email address</Form.Label>
+        <Form.Label className="text-info">Email address</Form.Label>
         <Form.Control
           name="email"
           type="email"
@@ -73,7 +73,7 @@ const Login = () => {
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="formBasicPassword">
-        <Form.Label>Password</Form.Label>
+        <Form.Label className="text-info">Password</Form.Label>
         <Form.Control
           name="password"
           type="password"
@@ -85,6 +85,9 @@ const Login = () => {
       <Button variant="primary" type="submit">
         Log In
       </Button>
+      <p>
+        Don't have an account? <Link to="/signIn">Sign UP</Link>
+      </p>
       <br />
       <p className="text-danger">{error}</p>
       <div className="mt-3 d-flex">

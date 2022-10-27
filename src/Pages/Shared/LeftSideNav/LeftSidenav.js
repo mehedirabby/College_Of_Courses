@@ -1,7 +1,9 @@
 import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
+import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import "./left.css";
 
 const LeftSidenav = () => {
   const [categories, setCategories] = useState([]);
@@ -12,15 +14,16 @@ const LeftSidenav = () => {
       .then((data) => setCategories(data));
   }, []);
   return (
-    <div>
-      <h4>Courses{categories.length}</h4>
-      <div>
-        {categories.map((category) => (
-          <p key={category.id}>
-            <Link to={`/category/${category.id}`}>{category.name}</Link>
-          </p>
-        ))}
-      </div>
+    <div className="mt-2 ms-2">
+      {categories.map((category) => (
+        <p key={category.id}>
+          <Button variant="outline-danger">
+            <Link className="btn text-info" to={`/category/${category.id}`}>
+              {category.name}
+            </Link>
+          </Button>
+        </p>
+      ))}
     </div>
   );
 };
