@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Course from "../../Course/Course/Course";
 import { FaStar, FaUser } from "react-icons/fa";
 
 const CourseSummeryCart = ({ course }) => {

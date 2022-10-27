@@ -5,6 +5,7 @@ import CourseSummeryCart from "../../Shared/courseSummeryCart/courseSummeryCart"
 
 const Home = () => {
   const allCourse = useLoaderData();
+  console.log(allCourse);
   return (
     <Row>
       {allCourse.map((course) => (
