@@ -48,6 +48,9 @@ const Header = () => {
             <Nav.Link className="text-white" href="/blogs">
               Blogs
             </Nav.Link>
+            <Nav.Link className="text-white" href="/blogs">
+              FaQ
+            </Nav.Link>
             <NavDropdown title="Link" id="navbarScrollingDropdown">
               <NavDropdown.Item className="text-white" href="#action3">
                 Action
